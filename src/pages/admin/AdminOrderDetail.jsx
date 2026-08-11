@@ -13,7 +13,7 @@ import EmptyState from '../../components/EmptyState';
 import OrderTimeline from '../../components/OrderTimeline';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import Modal from '../../components/Modal';
-import { ORDER_STATUSES, ORDER_STATUS_LABELS, ORDER_STATUS_STYLES, PLACEHOLDER_IMAGE } from '../../utils/constants';
+import { ORDER_STATUSES, ORDER_STATUS_LABELS, ORDER_STATUS_STYLES, PLACEHOLDER_IMAGE, productImage } from '../../utils/constants';
 import { formatDateTime, formatDeliveryDate, formatMoney, toInputDate } from '../../utils/format';
 
 const TRANSITIONS = {
@@ -166,7 +166,7 @@ export default function AdminOrderDetail() {
             <ul className="divide-y divide-divider">
               {order.items.map((item) => (
                 <li key={item.id} className="flex items-center gap-4 p-5">
-                  <img src={item.image_url || PLACEHOLDER_IMAGE} alt={item.product_name} className="h-14 w-14 rounded-xl border border-divider bg-base-2 object-cover" />
+                  <img src={productImage(item) || PLACEHOLDER_IMAGE} alt={item.product_name} className="h-14 w-14 rounded-xl border border-divider bg-base-2 object-cover" />
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-semibold text-white">{item.product_name}</p>
                     <p className="text-xs text-muted">{item.sku} · {item.quantity} × {formatMoney(item.unit_price)}</p>

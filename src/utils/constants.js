@@ -40,10 +40,28 @@ export function computeDeliveryFee(subtotal) {
   return subtotal >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
 }
 
-export const PLACEHOLDER_IMAGE = '/uploads/placeholder.svg';
+const isDesktop = typeof window !== 'undefined' && !!window.godwinshopDesktop?.isDesktop;
+
+// Root of the API server (no trailing /api), used to resolve /uploads/... paths.
+// In the browser the Vite proxy (dev) or the hosting setup serves them; on the
+// desktop (file://, no proxy) they must be absolute HTTPS URLs.
+const DESKTOP_API_ROOT = import.meta.env.VITE_API_URL
+  ? String(import.meta.env.VITE_API_URL).replace(/\/api\/?$/, '')
+  : 'https://godwinshop-api.onrender.com';
+
+export function resolveImageUrl(path) {
+  if (!path) return path;
+  if (/^https?:\/\//i.test(path)) return path;
+  if (isDesktop && path.startsWith('/')) return `${DESKTOP_API_ROOT}${path}`;
+  return path;
+}
+
+export const PLACEHOLDER_IMAGE = isDesktop
+  ? `${DESKTOP_API_ROOT}/uploads/placeholder.svg`
+  : '/uploads/placeholder.svg';
 
 export function productImage(product) {
-  return product?.image_url || PLACEHOLDER_IMAGE;
+  return resolveImageUrl(product?.image_url || PLACEHOLDER_IMAGE);
 }
 
 export function effectivePrice(product) {

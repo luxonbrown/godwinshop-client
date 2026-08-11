@@ -10,7 +10,7 @@ import Spinner from '../../components/Spinner';
 import EmptyState from '../../components/EmptyState';
 import ConfirmDialog from '../../components/ConfirmDialog';
 import Pagination from '../../components/Pagination';
-import { PRODUCT_STATUS_LABELS, PLACEHOLDER_IMAGE, effectivePrice } from '../../utils/constants';
+import { PRODUCT_STATUS_LABELS, PLACEHOLDER_IMAGE, effectivePrice, productImage } from '../../utils/constants';
 import { formatDate, formatMoney } from '../../utils/format';
 import { Link } from 'react-router-dom';
 import Modal from '../../components/Modal';
@@ -104,7 +104,7 @@ export default function AdminProducts() {
                   <tr key={p.id}>
                     <td>
                       <div className="flex items-center gap-3">
-                        <img src={p.image_url || '/uploads/placeholder.svg'} alt="" className="h-11 w-11 shrink-0 rounded-lg border border-divider bg-base-2 object-cover" />
+                        <img src={productImage(p) || PLACEHOLDER_IMAGE} alt="" className="h-11 w-11 shrink-0 rounded-lg border border-divider bg-base-2 object-cover" />
                         <div className="min-w-0">
                           <p className="truncate font-semibold text-white">{p.name}</p>
                           <p className="text-xs text-muted">{p.sku}</p>

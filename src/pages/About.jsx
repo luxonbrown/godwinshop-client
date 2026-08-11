@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Globe, Clock, PhoneCall, PackageCheck, CalendarCheck, ShieldCheck, Headphones } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import { PLACEHOLDER_IMAGE } from '../utils/constants';
 
 const WHY = [
   { icon: Globe, title: 'A marketplace built for today', text: 'Discover a curated catalogue of products across electronics, fashion, home, beauty and more — all in one place.' },
@@ -27,7 +28,7 @@ export default function About() {
         <div className="lg:col-span-2">
           <div className="card overflow-hidden">
             <img
-              src="/uploads/placeholder.svg"
+              src={PLACEHOLDER_IMAGE}
               alt="GodwinShop operations"
               className="h-56 w-full object-cover"
             />

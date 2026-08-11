@@ -5,6 +5,7 @@ import { useApi } from '../../hooks/useApi';
 import { useToast } from '../../context/ToastContext';
 import client from '../../api/client';
 import Spinner from '../../components/Spinner';
+import { productImage } from '../../utils/constants';
 import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 
 const EMPTY = {
@@ -47,7 +48,7 @@ export default function AdminProductForm() {
       stock_quantity: p.stock_quantity,
       status: p.status || 'active'
     });
-    setPreview(p.image_url || '/uploads/placeholder.svg');
+    setPreview(productImage(p) || '/uploads/placeholder.svg');
   }, [isEdit, productData]);
 
   if (catsLoading || (isEdit && prodLoading)) return <Spinner label="Loading…" />;

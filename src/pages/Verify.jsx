@@ -126,7 +126,7 @@ export default function Verify() {
                 <Send size={15} /> {sending ? 'Sending…' : 'Resend verification link'}
               </button>
               <p className="mt-4 text-xs text-muted">
-                In development mode the link is shown right after registration instead of being emailed.
+                Can&rsquo;t find it? Check your spam/junk folder. The link expires after 24 hours.
               </p>
             </div>
           )}

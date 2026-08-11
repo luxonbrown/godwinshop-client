@@ -5,6 +5,9 @@ import react from '@vitejs/plugin-react';
 // so the browser never needs a hard-coded backend URL.
 export default defineConfig({
   plugins: [react()],
+  // Relative asset paths so the built app also works when loaded from
+  // file:// inside the Electron (desktop) window. Identical behavior on web.
+  base: './',
   server: {
     port: 5173,
     proxy: {

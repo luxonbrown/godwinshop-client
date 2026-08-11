@@ -10,7 +10,7 @@ import Spinner from '../components/Spinner';
 import EmptyState from '../components/EmptyState';
 import OrderTimeline from '../components/OrderTimeline';
 import ConfirmDialog from '../components/ConfirmDialog';
-import { ORDER_STATUS_LABELS, ORDER_STATUS_STYLES, PLACEHOLDER_IMAGE } from '../utils/constants';
+import { ORDER_STATUS_LABELS, ORDER_STATUS_STYLES, PLACEHOLDER_IMAGE, productImage } from '../utils/constants';
 import { formatDateTime, formatDeliveryDate, formatMoney } from '../utils/format';
 
 export default function OrderDetail() {
@@ -90,7 +90,7 @@ export default function OrderDetail() {
               {order.items.map((item) => (
                 <li key={item.id} className="flex items-center gap-4 p-5">
                   <img
-                    src={item.image_url || PLACEHOLDER_IMAGE}
+                    src={productImage(item) || PLACEHOLDER_IMAGE}
                     alt={item.product_name}
                     className="h-16 w-16 rounded-xl border border-divider bg-base-2 object-cover"
                   />

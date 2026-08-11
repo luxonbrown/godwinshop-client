@@ -8,7 +8,7 @@ import client from '../api/client';
 import EmptyState from '../components/EmptyState';
 import Modal from '../components/Modal';
 import { formatMoney } from '../utils/format';
-import { PLACEHOLDER_IMAGE } from '../utils/constants';
+import { PLACEHOLDER_IMAGE, productImage } from '../utils/constants';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export default function Checkout() {
@@ -131,7 +131,7 @@ export default function Checkout() {
           <ul className="space-y-3">
             {items.map((item) => (
               <li key={item.product_id} className="flex items-center gap-4 rounded-lg border border-divider bg-base-2 p-3">
-                <img src={item.image_url || PLACEHOLDER_IMAGE} alt={item.name} className="h-14 w-14 rounded-lg border border-divider bg-surface object-cover" />
+                <img src={productImage(item) || PLACEHOLDER_IMAGE} alt={item.name} className="h-14 w-14 rounded-lg border border-divider bg-surface object-cover" />
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold text-white">{item.name}</p>
                   <p className="text-xs text-muted">{item.quantity} × {formatMoney(item.price)}</p>

@@ -4,7 +4,7 @@ import { useCart } from '../context/CartContext';
 import { useToast } from '../context/ToastContext';
 import { formatMoney } from '../utils/format';
 import EmptyState from '../components/EmptyState';
-import { PLACEHOLDER_IMAGE } from '../utils/constants';
+import { PLACEHOLDER_IMAGE, productImage } from '../utils/constants';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export default function Cart() {
@@ -35,7 +35,7 @@ export default function Cart() {
             <div key={item.product_id} className="card flex gap-4 p-4 sm:gap-5">
               <Link to={`/products/${item.product_id}`} className="shrink-0">
                 <img
-                  src={item.image_url || PLACEHOLDER_IMAGE}
+                  src={productImage(item) || PLACEHOLDER_IMAGE}
                   alt={item.name}
                   className="h-20 w-20 rounded-lg border border-divider bg-base-2 object-cover sm:h-24 sm:w-24"
                 />

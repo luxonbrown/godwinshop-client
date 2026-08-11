@@ -8,6 +8,7 @@ import { useApi } from '../hooks/useApi';
 import Spinner from '../components/Spinner';
 import Modal from '../components/Modal';
 import { formatDate } from '../utils/format';
+import { productImage } from '../utils/constants';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
 export default function Profile() {
@@ -115,7 +116,7 @@ export default function Profile() {
           <div className="flex flex-col items-center border-b border-divider bg-base-2 p-6">
             <div className="relative">
               <img
-                src={profile.profile_image || '/uploads/placeholder.svg'}
+                src={productImage(profile) || '/uploads/placeholder.svg'}
                 alt={`${profile.full_name} profile picture`}
                 className="h-24 w-24 rounded-full border-2 border-accent object-cover"
               />

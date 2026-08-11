@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+// Desktop (Electron) builds can't use the Vite dev proxy, so they fall back to
+// the production API over HTTPS. The web keeps its existing VITE_API_URL || '/api'
+// behaviour unchanged.
+const isDesktop = typeof window !== 'undefined' && !!window.godwinshopDesktop?.isDesktop;
+const baseURL = isDesktop
+  ? import.meta.env.VITE_API_URL || 'https://godwinshop-api.onrender.com/api'
+  : import.meta.env.VITE_API_URL || '/api';
+
 const client = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL,
   withCredentials: true
 });
 

@@ -12,7 +12,7 @@ import { useAuth } from '../context/AuthContext';
 import ProductCard from '../components/ProductCard';
 import Spinner from '../components/Spinner';
 import EmptyState from '../components/EmptyState';
-import { effectivePrice, isOutOfStock, PLACEHOLDER_IMAGE } from '../utils/constants';
+import { effectivePrice, isOutOfStock, PLACEHOLDER_IMAGE, productImage } from '../utils/constants';
 import { formatMoney } from '../utils/format';
 
 export default function ProductDetail() {
@@ -81,7 +81,7 @@ export default function ProductDetail() {
         {/* Image */}
         <div className="relative overflow-hidden rounded-2xl border border-divider bg-base-2">
           <img
-            src={product.image_url || PLACEHOLDER_IMAGE}
+            src={productImage(product) || PLACEHOLDER_IMAGE}
             alt={product.name}
             className="aspect-square w-full object-cover"
             onError={(e) => { if (e.currentTarget.src !== PLACEHOLDER_IMAGE) e.currentTarget.src = PLACEHOLDER_IMAGE; }}
