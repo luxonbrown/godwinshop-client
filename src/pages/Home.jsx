@@ -9,6 +9,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { useApi } from '../hooks/useApi';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import AdSenseAd from '../components/AdSenseAd';
 import ProductCard from '../components/ProductCard';
 import Spinner from '../components/Spinner';
 import EmptyState from '../components/EmptyState';
@@ -189,6 +190,13 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ===================== AD BANNER ===================== */}
+      <section className="border-b border-divider bg-base-2 py-6">
+        <div className="container-page">
+          <AdSenseAd />
         </div>
       </section>
 
